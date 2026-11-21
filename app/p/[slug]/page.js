@@ -13,6 +13,7 @@ import PromptCard from '@/components/PromptCard';
 import Thumb from '@/components/Thumb';
 import { VoteWidget } from '@/components/Forms';
 import { Arrow, Lock } from '@/components/Icons';
+import { modelInfo } from '@/lib/model';
 
 export const dynamic = 'force-dynamic';
 
@@ -29,12 +30,21 @@ function tested(p) {
   return `${p.tested_model}${d ? ' · ' + d : ''}`;
 }
 
+function ModelPanel({ p }) {
+  const mi = modelInfo(p);
+  return (
+    <div className="model-panel" aria-label="Model used for this result">
+      <div><span className="label">{mi.label}</span><span className="v">{mi.tested && <span className="ok" aria-hidden="true" />}{mi.model}</span></div>
+      <div><span className="label">{mi.tested ? 'Tested' : 'Status'}</span><span className="s">{mi.tested ? (p.tested_at ? new Date(p.tested_at).toLocaleDateString('en-GB', { day: 'numeric', month: 'short', year: 'numeric' }) : 'Yes') : 'Testing in progress'}</span></div>
+      {mi.also.length > 0 && <div><span className="label">Also works with</span><span className="s">{mi.also.join(' · ')}</span></div>}
+    </div>
+  );
+}
+
 function Meta({ p }) {
   return (
     <dl className="meta-grid">
-      <div><dt className="label">Written for</dt><dd>{(p.target_tools || []).join(' · ')}</dd></div>
       <div><dt className="label">Source</dt><dd>{p.creator_name === 'CopyThat Studio' ? 'Original · CopyThat Studio' : p.creator_name}</dd></div>
-      <div><dt className="label">Last tested</dt><dd>{tested(p)}</dd></div>
       <div><dt className="label">Licence</dt><dd>{p.license || '—'}</dd></div>
     </dl>
   );
@@ -106,6 +116,7 @@ export default async function PromptPage({ params }) {
               <div className="up" style={{ animationDelay: '.55s' }}><Tags p={p} /></div>
               <h1 className="up" style={{ animationDelay: '.62s', margin: '22px 0 0', fontSize: 'clamp(52px, 7.4vw, 112px)', lineHeight: .92, fontWeight: 500, letterSpacing: '-.05em' }}>Motion Brand<br />Showcase</h1>
               <p className="lede up" style={{ animationDelay: '.7s' }}>Hand it a brand guideline. Get back a finished, cinematic brand film — built in code, tested frame by frame, rendered to MP4.</p>
+              <div className="up" style={{ animationDelay: '.74s', marginTop: 28, maxWidth: 640 }}><ModelPanel p={p} /></div>
             </div>
             <div className="up" style={{ animationDelay: '.78s', display: 'flex', flexDirection: 'column', gap: 10, minWidth: 260 }}>
               {unlocked
@@ -161,6 +172,7 @@ export default async function PromptPage({ params }) {
       <Tags p={p} />
       <h1>{p.title}</h1>
       <p className="body" style={{ margin: 0 }}>{p.summary}</p>
+      <ModelPanel p={p} />
     </>
   );
   const footer = (<><VoteWidget slug={p.slug} /><Meta p={p} /></>);

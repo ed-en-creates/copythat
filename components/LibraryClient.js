@@ -10,16 +10,19 @@ export default function LibraryClient({ prompts, initialCat = 'all' }) {
   const [cat, setCat] = useState(CATS.some(([c]) => c === initialCat) ? initialCat : 'all');
   const [q, setQ] = useState('');
   const [sort, setSort] = useState('featured');
+  const [model, setModel] = useState('all');
+  const models = useMemo(() => [...new Set(prompts.flatMap((p) => [p.tested_model, ...(p.target_tools || [])].filter(Boolean)))].sort(), [prompts]);
   const visible = useMemo(() => {
     const needle = q.trim().toLowerCase();
     let list = prompts.filter((p) =>
       (cat === 'all' || p.category_slug === cat) &&
-      (!needle || `${p.title} ${p.summary} ${(p.target_tools || []).join(' ')}`.toLowerCase().includes(needle)));
+      (model === 'all' || p.tested_model === model || (p.target_tools || []).includes(model)) &&
+      (!needle || `${p.title} ${p.summary} ${p.tested_model || ''} ${(p.target_tools || []).join(' ')}`.toLowerCase().includes(needle)));
     if (sort === 'newest') list = [...list].sort((a, b) => String(b.published_at).localeCompare(String(a.published_at)));
     if (sort === 'az') list = [...list].sort((a, b) => a.title.localeCompare(b.title));
     return list;
-  }, [prompts, cat, q, sort]);
-  const reset = () => { setCat('all'); setQ(''); };
+  }, [prompts, cat, q, sort, model]);
+  const reset = () => { setCat('all'); setQ(''); setModel('all'); };
 
   return (
     <>
@@ -29,6 +32,12 @@ export default function LibraryClient({ prompts, initialCat = 'all' }) {
           <label htmlFor="lib-q" className="sr-only">Search the library</label>
           <input id="lib-q" type="search" placeholder="Search by idea, style or tool" value={q} onChange={(e) => setQ(e.target.value)} />
         </div>
+        <label className="select-wrap"><span>Model</span>
+          <select value={model} onChange={(e) => setModel(e.target.value)}>
+            <option value="all">Any model</option>
+            {models.map((m) => <option key={m} value={m}>{m}</option>)}
+          </select>
+        </label>
         <label className="select-wrap"><span>Sort</span>
           <select value={sort} onChange={(e) => setSort(e.target.value)}>
             <option value="featured">Featured</option><option value="newest">Newest</option><option value="az">A–Z</option>

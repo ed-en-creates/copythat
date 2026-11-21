@@ -208,6 +208,14 @@ textarea.field { padding: 14px 16px; line-height: 1.6; resize: vertical; }
 .pcard-thumb img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; }
 .pcard-cat { position: absolute; top: 14px; left: 14px; font-family: var(--mono); font-size: 11px; letter-spacing: .06em; text-transform: uppercase; color: var(--muted); }
 .pcard-pro { position: absolute; top: 12px; right: 12px; }
+.pcard-model { position: absolute; left: 12px; bottom: 12px; display: inline-flex; align-items: center; gap: 6px; max-width: calc(100% - 90px); white-space: nowrap; overflow: hidden; text-overflow: ellipsis; font-size: 12px; font-weight: 500; color: var(--text); background: rgba(10,10,10,.82); border: 1px solid var(--line-3); padding: 5px 10px; border-radius: 999px; backdrop-filter: blur(6px); }
+.pcard-model .k { font-family: var(--mono); font-size: 10px; letter-spacing: .06em; text-transform: uppercase; color: var(--muted); font-weight: 400; }
+.pcard-model .ok { width: 6px; height: 6px; border-radius: 50%; background: var(--pass); flex: none; }
+.model-panel { display: grid; grid-template-columns: repeat(auto-fit, minmax(160px, 1fr)); gap: 1px; background: var(--line-2); border: 1px solid var(--line-2); border-radius: 18px; overflow: hidden; }
+.model-panel > div { background: var(--surface); padding: 16px 18px; display: flex; flex-direction: column; gap: 8px; }
+.model-panel .v { font-size: 20px; font-weight: 500; letter-spacing: -.02em; display: flex; align-items: center; gap: 8px; }
+.model-panel .v .ok { width: 8px; height: 8px; border-radius: 50%; background: var(--pass); }
+.model-panel .s { font-size: 14px; color: var(--text-2); }
 .pcard-hint { position: absolute; bottom: 12px; right: 12px; font-family: var(--mono); font-size: 11px; color: var(--text); background: rgba(10,10,10,.8); border: 1px solid var(--line-3); padding: 5px 9px; border-radius: 999px; opacity: 0; transform: translateY(6px); transition: opacity .3s ease, transform .3s ease; }
 .pcard:hover .pcard-hint { opacity: 1; transform: translateY(0); }
 .pcard-body { padding: 18px 18px 16px; display: flex; flex-direction: column; gap: 8px; flex: 1; }
