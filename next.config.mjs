@@ -1,6 +1,9 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
   poweredByHeader: false,
+  async redirects() {
+    return [{ source: '/pricing', destination: '/open-source', permanent: false }];
+  },
   async headers() {
     return [{
       source: '/(.*)',

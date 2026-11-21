@@ -94,7 +94,8 @@ export default async function PromptPage({ params }) {
   /* ---------- Motion Brand Showcase (Pro film page) ---------- */
   if (slug === 'motion-brand-showcase') {
     const freeBodies = splitShowcase(p.preview_text || '');
-    const fullBodies = p.proBody ? splitShowcase(p.proBody) : null;
+    const fullText = p.proBody || (p.tier === 'free' ? p.body : null);
+    const fullBodies = fullText ? splitShowcase(fullText) : null;
     const steps = SHOWCASE_STEPS.map((title, i) => fullBodies ? { title, body: fullBodies[i] || '' } : (i < freeBodies.length ? { title, body: freeBodies[i] } : { title, body: TEASER + ' ' + TEASER, locked: true }));
     return (
       <>
@@ -108,9 +109,9 @@ export default async function PromptPage({ params }) {
             </div>
             <div className="up" style={{ animationDelay: '.78s', display: 'flex', flexDirection: 'column', gap: 10, minWidth: 260 }}>
               {unlocked
-                ? <div style={{ display: 'flex' }}><CopyButton text={p.proBody} label="Copy full prompt" /></div>
+                ? <div style={{ display: 'flex' }}><CopyButton text={fullText} label="Copy full prompt" /></div>
                 : <Link className="btn btn-accent btn-lg btn-block" href="/pricing"><Lock />Unlock with Pro</Link>}
-              <span style={{ fontSize: 13, color: 'var(--faint)', textAlign: 'center' }}>{unlocked ? 'Included in your Pro plan' : '$29 one-time · or included in Pro'}</span>
+              <span style={{ fontSize: 13, color: 'var(--faint)', textAlign: 'center' }}>{unlocked ? 'Free · open source · CC BY 4.0' : 'Coming soon'}</span>
             </div>
           </div>
 

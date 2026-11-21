@@ -44,7 +44,7 @@ export default function How() {
         <section id="terms" aria-labelledby="t-h" className="row" style={{ marginTop: 140, gap: 48, scrollMarginTop: 120 }}>
           <div style={{ flex: '1 1 340px', maxWidth: 460 }}><p className="eyebrow">Terms, in plain words</p><h2 id="t-h" className="h-section">The short version.</h2></div>
           <ul style={{ flex: '999 1 560px', listStyle: 'none', margin: 0, padding: 0, borderBottom: '1px solid var(--line-2)' }}>
-            {['Use anything you make with CopyThat prompts in your own and client work.', 'Don’t resell or republish the Pro prompts themselves.', 'Results from AI models vary. We test, but we can’t promise identical output.', 'We only collect what we need: your email if you give it, and what you send us. We never sell it.', 'Full terms and privacy policy are being finalised before paid plans open.'].map((t) => (
+            {['Use anything you make with CopyThat prompts in your own and client work.', 'Prompts are shared under CC BY 4.0: copy, adapt and share them, even commercially — just credit CopyThat.', 'Results from AI models vary. We test, but we can’t promise identical output.', 'We only collect what we need: your email if you give it, and what you send us. We never sell it.', 'The site’s code is open source under the MIT licence on GitHub.'].map((t) => (
               <li key={t} className="body" style={{ padding: '22px 0', borderTop: '1px solid var(--line-2)' }}>{t}</li>
             ))}
           </ul>

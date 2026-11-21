@@ -1,5 +1,7 @@
+import FilmThumb from './FilmThumb';
 const A = 'var(--accent)';
 export default function Thumb({ prompt }) {
+  if (prompt.preview_video) return <FilmThumb src={prompt.preview_video} poster={prompt.preview_url} />;
   if (prompt.preview_url) return <img src={prompt.preview_url} alt="" loading="lazy" />;
   switch (prompt.category_slug) {
     case 'motion': return <div className="play a-slide" style={{ width: 46, height: 46, borderRadius: 12, background: A }} />;

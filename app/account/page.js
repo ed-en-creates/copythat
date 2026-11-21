@@ -23,7 +23,7 @@ export default async function Account() {
       </div>
       <div className="row" style={{ marginTop: 32, gap: 12 }}>
         <Link className="btn btn-accent" href="/library">Browse the library</Link>
-        {!pro && <Link className="btn btn-ghost" href="/pricing">Get Pro</Link>}
+        <Link className="btn btn-ghost" href="/submit">Submit a prompt</Link>
         <form action={signOut}><button type="submit" className="btn btn-ghost">Sign out</button></form>
       </div>
     </main>

@@ -3,7 +3,7 @@ import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 import { Logo } from './Icons';
 
-const LINKS = [['Library', '/library'], ['Packs', '/pricing'], ['How it works', '/how'], ['Changelog', '/changelog']];
+const LINKS = [['Library', '/library'], ['Open source', '/open-source'], ['How it works', '/how'], ['Changelog', '/changelog']];
 
 export default function Nav({ signedIn }) {
   const path = usePathname();
@@ -18,7 +18,7 @@ export default function Nav({ signedIn }) {
         </div>
         <div className="nav-right">
           {signedIn ? <Link className="link" href="/account">Account</Link> : <Link className="link" href="/signin">Sign in</Link>}
-          <Link className="btn btn-light btn-sm" href="/pricing">Get Pro</Link>
+          <Link className="btn btn-light btn-sm" href="/submit">Submit a prompt</Link>
         </div>
       </nav>
     </header>

@@ -5,8 +5,8 @@ import { FeedbackForm } from '@/components/Forms';
 export const metadata = { title: 'Feedback', description: 'An idea, a bug, a prompt that didn’t work, or something you love. We read everything.' };
 
 const ROAD = [
-  ['In progress', 'var(--accent)', [['Payments', 'Pro and packs, in dollars or naira, by card, transfer or USSD.'], ['Saved collections', 'Keep the prompts you use most in one place.']]],
-  ['Planned', '#EDEDEA', [['Result uploads', 'Attach the image or video your prompt made when you submit it.'], ['Creator packs', 'Sell your own workflows here, with a revenue share.']]],
+  ['In progress', 'var(--accent)', [['More prompts every week', 'New motion, UI and branding workflows, each with its result.'], ['Saved collections', 'Keep the prompts you use most in one place.']]],
+  ['Planned', '#EDEDEA', [['Result uploads', 'Attach the image or video your prompt made when you submit it.'], ['Pull requests', 'Add prompts straight from GitHub.']]],
   ['Shipped', 'var(--pass)', [['Library filters', 'Category, Free or Pro, and search.'], ['Live customiser', 'Change a prompt’s values and watch the result update.']]],
 ];
 

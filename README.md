@@ -1,6 +1,11 @@
 # CopyThat
 
-Prompts that already worked — Next.js 16 (App Router) + Supabase.
+An open-source library of AI prompts and workflows for creatives — every prompt shows the result it made.
+
+- **Prompts:** CC BY 4.0 (see `CONTENT-LICENSE.md`) · **Code:** MIT (see `LICENSE`)
+- Contributing: see `CONTRIBUTING.md`
+
+Built with Next.js 16 (App Router) + Supabase.
 
 ## Run locally
 1. `npm install`
@@ -12,7 +17,7 @@ Prompts that already worked — Next.js 16 (App Router) + Supabase.
 3. `npm run dev` → http://localhost:3000
 
 ## Where things live
-- `app/` — pages: home (`page.js`), `library`, `p/[slug]` (prompt pages), `pricing`, `how`, `changelog`, `signin`, `account`, `submit`, `feedback`
+- `app/` — pages: home (`page.js`), `library`, `p/[slug]` (prompt pages), `open-source`, `how`, `changelog`, `signin`, `account`, `submit`, `feedback`
 - `app/actions.js` — server actions: waitlist, feedback, submissions, "did it work?" votes, magic-link sign-in
 - `components/` — Prompt Machine hero, library, forms, film player, customiser
 - `lib/` — Supabase clients and data queries
@@ -25,4 +30,4 @@ Tables: `prompts` (public metadata), `prompt_pro_content` (Pro text, readable on
 - Read feedback / submissions / waitlist in the Supabase Table Editor.
 
 ## Media
-The brand film streams from Supabase Storage: bucket `media`, file `fluxa-brand-film.mp4`.
+The Fluxa Pay brand film and its library teaser live in `public/media/`.

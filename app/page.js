@@ -26,7 +26,7 @@ export default async function Home() {
           <div className="wrap">
             <div className="row between end">
               <div><p className="eyebrow">Made with CopyThat</p><h2 id="film-h" className="h-section">One prompt.<br />A finished brand film.</h2></div>
-              <Link className="btn btn-light" href="/p/motion-brand-showcase">See the workflow <Arrow /></Link>
+              <Link className="btn btn-light" href="/p/motion-brand-showcase">Get the prompt — free <Arrow /></Link>
             </div>
             <HomeFilm />
           </div>
@@ -61,12 +61,12 @@ export default async function Home() {
         <section aria-labelledby="price-h" style={{ padding: '0 var(--pad) 120px' }}>
           <div className="panel" style={{ maxWidth: 1360, margin: '0 auto', borderRadius: 28, padding: 'clamp(28px, 5vw, 64px)', display: 'flex', flexWrap: 'wrap', gap: 40, alignItems: 'center', justifyContent: 'space-between' }}>
             <div style={{ flex: '1 1 520px' }}>
-              <p className="eyebrow">Pricing</p><h2 id="price-h" className="h-section">Free to start. Pays for itself on one job.</h2>
-              <p className="body" style={{ margin: '20px 0 0', maxWidth: 560 }}>The whole free library costs nothing, forever. Pro unlocks every workflow, plus a new one each month.</p>
+              <p className="eyebrow">Open source</p><h2 id="price-h" className="h-section">Every prompt is free. Take it, use it, make it better.</h2>
+              <p className="body" style={{ margin: '20px 0 0', maxWidth: 560 }}>The whole library is open source under CC BY 4.0 and grows every week. Use it in client work — just credit CopyThat.</p>
             </div>
             <div className="row" style={{ gap: 12 }}>
-              <Link className="btn btn-accent btn-lg" href="/pricing">See pricing</Link>
-              <Link className="btn btn-ghost btn-lg" href="/library">Start free</Link>
+              <Link className="btn btn-accent btn-lg" href="/library">Browse the library</Link>
+              <a className="btn btn-ghost btn-lg" href="https://github.com/ed-en-creates/copythat" target="_blank" rel="noopener noreferrer">Star on GitHub</a>
             </div>
           </div>
         </section>

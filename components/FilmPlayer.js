@@ -1,5 +1,5 @@
 'use client';
-const FILM = process.env.NEXT_PUBLIC_FILM_URL || 'https://eflifirrqfngxiuzfxwk.supabase.co/storage/v1/object/public/media/fluxa-brand-film.mp4';
+const FILM = process.env.NEXT_PUBLIC_FILM_URL || '/media/fluxa-brand-film.mp4';
 import { useEffect, useRef, useState } from 'react';
 import { PlayPause } from './Icons';
 
@@ -22,7 +22,7 @@ export default function FilmPlayer() {
   return (
     <section aria-label="Film made with this prompt" className="reveal" style={{ marginTop: 56 }}>
       <div className="player">
-        <video ref={v} src={FILM} poster="/media/fluxa-poster.webp" muted loop playsInline preload="metadata"
+        <video ref={v} src={FILM} poster="/media/fluxa-poster.webp" muted loop playsInline autoPlay preload="auto"
           onTimeUpdate={(e) => { const nt = e.currentTarget.currentTime; if (Math.abs(nt - t) > 0.2) setT(nt); }}
           onPlay={() => setPlaying(true)} onPause={() => setPlaying(false)} aria-label="Fluxa Pay brand film, made with this prompt" />
         <div className="overlay"><span>Made with this prompt</span><span>Fluxa Pay · 16:9 · 56s</span></div>

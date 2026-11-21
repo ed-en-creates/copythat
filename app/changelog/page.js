@@ -5,7 +5,8 @@ import { Arrow } from '@/components/Icons';
 export const metadata = { title: 'Changelog', description: 'New prompts, re-tests and fixes, as they ship.' };
 
 const ENTRIES = [
-  ['Nov 2026', 'New', 'Motion Brand Showcase', 'A Pro workflow that turns a brand guideline into a finished brand film. Example: the Fluxa Pay film.', '/p/motion-brand-showcase'],
+  ['Nov 2026', 'New', 'CopyThat is open source', 'Every prompt is now free under CC BY 4.0, and the site’s code is on GitHub under MIT. Pro is on hold until the library is much bigger.', '/open-source'],
+  ['Nov 2026', 'New', 'Motion Brand Showcase', 'A workflow that turns a brand guideline into a finished brand film. Example: the Fluxa Pay film.', '/p/motion-brand-showcase'],
   ['Nov 2026', 'New', 'Three-beat logo reveal', 'Free motion prompt with a live customiser for colour, stagger and hold.', '/p/three-beat-logo-reveal'],
   ['Nov 2026', 'New', 'Feedback and “Did this work?”', 'Tell us what to build, and flag any prompt that stopped working.', '/feedback'],
   ['Nov 2026', 'Launch', 'CopyThat opens', 'The first twelve prompts go live, across motion, UI, branding, product, websites and code.', '/library'],

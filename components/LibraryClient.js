@@ -8,20 +8,18 @@ const CATS = [['all', 'All prompts'], ['motion', 'Motion'], ['ui', 'UI'], ['bran
 
 export default function LibraryClient({ prompts, initialCat = 'all' }) {
   const [cat, setCat] = useState(CATS.some(([c]) => c === initialCat) ? initialCat : 'all');
-  const [tier, setTier] = useState('all');
   const [q, setQ] = useState('');
   const [sort, setSort] = useState('featured');
   const visible = useMemo(() => {
     const needle = q.trim().toLowerCase();
     let list = prompts.filter((p) =>
       (cat === 'all' || p.category_slug === cat) &&
-      (tier === 'all' || p.tier === tier) &&
       (!needle || `${p.title} ${p.summary} ${(p.target_tools || []).join(' ')}`.toLowerCase().includes(needle)));
     if (sort === 'newest') list = [...list].sort((a, b) => String(b.published_at).localeCompare(String(a.published_at)));
     if (sort === 'az') list = [...list].sort((a, b) => a.title.localeCompare(b.title));
     return list;
-  }, [prompts, cat, tier, q, sort]);
-  const reset = () => { setCat('all'); setTier('all'); setQ(''); };
+  }, [prompts, cat, q, sort]);
+  const reset = () => { setCat('all'); setQ(''); };
 
   return (
     <>
@@ -30,9 +28,6 @@ export default function LibraryClient({ prompts, initialCat = 'all' }) {
           <SearchIcon />
           <label htmlFor="lib-q" className="sr-only">Search the library</label>
           <input id="lib-q" type="search" placeholder="Search by idea, style or tool" value={q} onChange={(e) => setQ(e.target.value)} />
-        </div>
-        <div className="seg" role="group" aria-label="Tier" style={{ borderRadius: 14, height: 54, alignItems: 'center' }}>
-          {[['all', 'All'], ['free', 'Free'], ['pro', 'Pro']].map(([id, label]) => <button key={id} type="button" aria-pressed={tier === id} onClick={() => setTier(id)} style={{ borderRadius: 10, height: 44 }}>{label}</button>)}
         </div>
         <label className="select-wrap"><span>Sort</span>
           <select value={sort} onChange={(e) => setSort(e.target.value)}>
